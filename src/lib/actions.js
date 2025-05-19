@@ -114,23 +114,24 @@ export async function delete_image(imagePath) {
 // auth
 export async function sign_in(password) {
   const email = "admin@mohayyad.site";
+
   const { data: user, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
   if (error) {
-    return {
-      correct: false,
-      error: error.message,
-    };
+    throw new Error(error.message);
   }
+
   if (user) {
     return {
       correct: true,
       error: null,
     };
   }
+
+  throw new Error("Unknown error occurred");
 }
 
 
