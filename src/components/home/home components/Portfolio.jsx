@@ -6,6 +6,7 @@ import ProjectCard from "@/components/ProjectCard";
 import ScrollFadeIn from "@/components/motion/FadeIn";
 
 export default function Portfolio({ allProjects }) {
+  console.log(allProjects)
   const [flProjects, setFlProjects] = useState([]);
   const [activeTab, setActiveTab] = useState("web apps");
 
