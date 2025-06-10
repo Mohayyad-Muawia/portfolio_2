@@ -390,7 +390,7 @@
     overflow: hidden;
     align-items: center;
     padding: 6px;
-      box-shadow: 2px 2px 16px 8px #0000003f;
+    box-shadow: 2px 2px 16px 8px #0000003f;
 
     a {
       padding: 10px 20px;
@@ -404,7 +404,6 @@
     a.active {
       background-color: var(--light);
       box-shadow: 2px 2px 16px 8px #1515153f;
-
     }
   }
 
@@ -514,6 +513,11 @@
   flex-flow: column;
   align-items: center;
   justify-content: center;
+
+  p {
+    font-size: 20px;
+    opacity: 0.6;
+  }
 }
 
 .project-loading {
@@ -902,22 +906,11 @@
 
   .portfolio {
     .projects-tabs {
-      margin: 0;
+      margin: 0 auto;
       margin-bottom: 40px;
       a {
         font-size: 11px;
-        padding: 10px;
-      }
-      .mark.a {
-        width: 121px;
-      }
-      .mark.b {
-        width: 105px;
-        left: 121px;
-      }
-      .mark.c {
-        width: 100px;
-        left: 228px;
+        padding: 7px 10px;
       }
     }
 
@@ -925,6 +918,24 @@
       grid-template-columns: repeat(1, 1fr);
       gap: 15px;
       margin-bottom: 100px;
+
+      .project {
+        .top {
+          h3 {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .no-projects {
+      text-align: center;
+      h1 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 14px;
+      }
     }
   }
   .showProject {

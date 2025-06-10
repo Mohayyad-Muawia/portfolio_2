@@ -5,13 +5,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import ProjectCard from "@/components/ProjectCard";
 import ScrollFadeIn from "@/components/motion/FadeIn";
 
-export default function Portfolio({ allProjects }) {
-  console.log(allProjects)
+export default function Portfolio() {
+  const [allProjects, setAllProjects] = useState([]);
   const [flProjects, setFlProjects] = useState([]);
   const [activeTab, setActiveTab] = useState("web apps");
 
   useEffect(() => {
-    setFlProjects(allProjects?.filter((project) => project.type === activeTab));
+    async function fetchProjects() {
+      try {
+        const res = await fetch("/api/projects", { cache: "no-store" });
+        const data = await res.json();
+        setAllProjects(data);
+      } catch (err) {
+        console.error("Failed to fetch projects", err);
+      }
+    }
+
+    fetchProjects();
+  }, []);
+
+  useEffect(() => {
+    setFlProjects(allProjects.filter((project) => project.type === activeTab));
   }, [activeTab, allProjects]);
 
   const tabLabels = {
@@ -73,7 +87,7 @@ export default function Portfolio({ allProjects }) {
         <ScrollFadeIn>
           <div className="no-projects">
             <h1>Sorry, there is no Projects Found.</h1>
-            <h3>Please check back later or contact me for more information.</h3>
+            <p>Please check back later or contact me for more information.</p>
           </div>
         </ScrollFadeIn>
       )}

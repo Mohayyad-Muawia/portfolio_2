@@ -30,7 +30,35 @@ export default function ProjectCard({ project, setProjects, authenticated }) {
         />
       </div>
       <div className="info">
-        <h3>{project.title}</h3>
+        <div className="top">
+          <h3>{project.title}</h3>
+          <div className="btns">
+            <a
+              className={project.github ? "" : "disabled"}
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <span className="separator"></span>
+            <a href={project.url} target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faLink} />
+            </a>
+            {authenticated && (
+              <>
+                <span className="separator"></span>
+                <a
+                  className="delete"
+                  target="_blank"
+                  onClick={() => deleteProject(project.id)}
+                >
+                  <FontAwesomeIcon icon={faTrashCan} />
+                </a>
+              </>
+            )}
+          </div>
+        </div>
         <p>{project.description}</p>
 
         <div className="techs">
@@ -39,33 +67,6 @@ export default function ProjectCard({ project, setProjects, authenticated }) {
               {tech}
             </span>
           ))}
-        </div>
-
-        <div className="btns">
-          <a
-            className={project.github ? "" : "disabled"}
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faGithub} />
-          </a>
-          <span className="separator"></span>
-          <a href={project.url} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faLink} />
-          </a>
-          {authenticated && (
-            <>
-              <span className="separator"></span>
-              <a
-                className="delete"
-                target="_blank"
-                onClick={() => deleteProject(project.id)}
-              >
-                <FontAwesomeIcon icon={faTrashCan} />
-              </a>
-            </>
-          )}
         </div>
       </div>
     </div>
