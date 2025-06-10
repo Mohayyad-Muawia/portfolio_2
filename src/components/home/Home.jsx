@@ -8,6 +8,7 @@ import Contact from "./home components/Contact";
 import Welcome from "../Welcome";
 import toast from "react-hot-toast";
 
+export const dynamic = "force-dynamic";
 export default async function Home() {
   let allProjects;
   try {
