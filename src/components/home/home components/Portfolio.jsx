@@ -11,21 +11,7 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("web apps");
 
   useEffect(() => {
-    async function fetchProjects() {
-      try {
-        const res = await fetch("/api/projects", { cache: "no-store" });
-        const data = await res.json();
-        setAllProjects(data);
-      } catch (err) {
-        console.error("Failed to fetch projects", err);
-      }
-    }
-
-    fetchProjects();
-  }, []);
-
-  useEffect(() => {
-    setFlProjects(allProjects.filter((project) => project.type === activeTab));
+    setFlProjects(allProjects?.filter((project) => project.type === activeTab));
   }, [activeTab, allProjects]);
 
   const tabLabels = {
