@@ -428,6 +428,14 @@
         gap: 10px;
         padding: 0;
 
+        .top {
+          display: flex;
+          align-items: center;
+          h3 {
+            flex: 1;
+          }
+        }
+
         p {
           line-height: 25px;
           opacity: 0.6;
