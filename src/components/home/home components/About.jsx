@@ -62,7 +62,7 @@ export default function About() {
         </ScrollFadeIn>
 
         <ScrollFadeIn>
-          <a className="cv main-btn" href="/CV.pdf" download="/CV.pdf">
+          <a className="cv main-btn" href="/cv.pdf" download="/cv.pdf">
             Download My Resume <FontAwesomeIcon icon={faFileLines} />
           </a>
         </ScrollFadeIn>
